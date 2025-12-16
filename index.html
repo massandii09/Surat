@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Yudisium Mimikuuu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Mencegah scroll pada body saat animasi */
+        }
+
+        /* Container responsif untuk mobile */
+        .card-container {
+            width: 90%; /* Mengikuti lebar layar HP */
+            max-width: 350px; /* Batas maksimal lebar */
+            height: 580px; /* Tinggi disesuaikan */
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        /* --- SISI DEPAN --- */
+        .card-front {
+            background: linear-gradient(135deg, #dfb887 0%, #c4a484 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .icon-mail { font-size: 60px; margin-bottom: 10px; }
+        .card-front h2 { font-size: 22px; margin: 10px 0; }
+        
+        .btn-open {
+            margin-top: 20px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            color: #c4a484;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            -webkit-tap-highlight-color: transparent; /* Menghilangkan highlight biru di HP saat diklik */
+        }
+
+        /* --- SISI BELAKANG (MOBILE VERSION) --- */
+        .card-back {
+            background: #fffcf2;
+            transform: rotateY(180deg);
+            padding: 25px 20px; /* Padding lebih kecil untuk HP */
+            border: 6px solid #f9f1dc;
+            justify-content: space-between;
+        }
+
+        .header-section h2 {
+            color: #d4a373;
+            font-size: 20px; /* Ukuran font judul lebih kecil */
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: #f1e4c3;
+            margin: 10px 0;
+        }
+
+        .letter-content {
+            font-size: 14px; /* Ukuran teks pesan lebih pas untuk layar kecil */
+            line-height: 1.5;
+            color: #444;
+            font-style: italic;
+            white-space: pre-line;
+            max-height: 320px; /* Mencegah teks meluber keluar */
+            overflow-y: auto; /* Bisa scroll jika teks sangat panjang */
+            padding-right: 5px;
+        }
+
+        .sender-info {
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        .sender-label { font-size: 12px; color: #888; }
+        .sender-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #d4a373;
+        }
+
+        .btn-close {
+            margin-top: 10px;
+            background: none;
+            border: 1px solid #d4a373;
+            color: #d4a373;
+            padding: 6px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 10px;
+            align-self: center;
+        }
+
+        /* Custom Scrollbar untuk Mobile */
+        .letter-content::-webkit-scrollbar {
+            width: 3px;
+        }
+        .letter-content::-webkit-scrollbar-thumb {
+            background: #f1e4c3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card-inner" id="myCard">
+            
+            <div class="card-front">
+                <div class="icon-mail">🎓</div>
+                <h2>Ada Surat Spesial <br> Untuk Mimikuuu😊</h2>
+                <button class="btn-open" onclick="openCard()">Buka Surat</button>
+            </div>
+
+            <div class="card-back">
+                <div class="content-top">
+                    <div class="header-section">
+                        <h2>Selamat Yudisiummm <br> Mimikuuu ✨</h2>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="letter-content">
+"Mimiikuuu Kalo kitaa baca inii brarti sudah yudisiumm yaaa hehehehe Selamat Yudisiumm sayangkuuu Ciee tinggal dikit lagii mauu finishh nihhhh Maaf yaah selama ini cwomuu seringg bikinn kitaa sebel, jengkell, maarahhhh Truss sering sekali ndaa sinkronn, jadi gagal paham maksudnya kitaa trss pokoknyaaa Tapii mau usahainnn biarr kebiasa + sinkronn Pokoknyaa mauu jadii laki-laki yang kitaa inginkann Sayangg kitaaaa Mimi Hasmiati!!!!!!!!!"
+                    </div>
+                </div>
+
+                <div class="sender-info">
+                    <div class="sender-label">Dari Cwomuu,</div>
+                    <div class="sender-name">[Yantooo]</div>
+                </div>
+
+                <button class="btn-close" onclick="closeCard()">Tutup</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const card = document.getElementById('myCard');
+
+        function openCard() {
+            card.classList.add('is-flipped');
+            setTimeout(() => {
+                alert("Selamat Membacaa! ❤️");
+            }, 600);
+        }
+
+        function closeCard() {
+            card.classList.remove('is-flipped');
+        }
+    </script>
+
+</body>
+</html>
